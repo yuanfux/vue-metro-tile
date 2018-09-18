@@ -32,7 +32,7 @@ or
 ## Usage
 >  A blue metro tile with simple texts on 4 faces
 ```html
-<MetroTile
+<metro-tile
     @click="handleClick($event)" 
     faceStyle="{'background-color': 'blue'}"
     >
@@ -48,7 +48,7 @@ or
   <div slot="bottom">
     bottom
   </div>
-</MetroTile>
+</metro-tile>
 ```
 
 
