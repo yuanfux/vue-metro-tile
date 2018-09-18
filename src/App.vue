@@ -255,39 +255,6 @@
         </grid-item>
       </grid-layout>
     </div>
-    <!-- <MetroTile
-        @click="testClick($event)" 
-        :width="width"
-        :height="height"
-        :length="length"
-        :frontFace="'front'"
-        :frontStyle="frontStyle" 
-        :backStyle="backStyle"
-        :leftStyle="leftStyle"
-        :rightStyle="rightStyle"
-        :topStyle="topStyle"
-        :bottomStyle="bottomStyle"
-        :perspective="750"
-        :hoverGlareOpacity="0.5">
-      <div slot="front">
-          front
-      </div>
-      <div slot="back">
-        back
-      </div>
-      <div slot="left">
-        left
-      </div>
-      <div slot="right">
-        right
-      </div>
-      <div slot="top">
-        top
-      </div>
-      <div slot="bottom">
-        bottom
-      </div>
-    </MetroTile> -->
   </div>
 </template>
 
@@ -595,35 +562,7 @@ export default {
     })(),
     monthDay: (() => {
       return new Date().getDate();
-    })(),
-    width: 260,
-    height: 260,
-    length: 520,
-    frontFace: 'front',
-    faceIndex1: 0,
-    faceArray1: ['front', 'top', 'front', 'bottom'],
-    faceIndex2: 0,
-    faceArray2: ['front', 'top'],
-    frontStyle: {
-      // 'background-color': 'rgba(255, 208, 181, 1)'
-      'background-color': '#1E90FF'
-      // 'background-color': '#000'
-    },
-    backStyle: {
-      'background-color': 'rgba(240, 178, BASE_LEN*2 - MARGIN*2, 0.5)'
-    },
-    leftStyle: {
-      'background-color': 'rgba(207, 112, 63, 0.5)'
-    },
-    rightStyle: {
-      'background-color': 'rgba(172, 233, 231, 0.5)'
-    },
-    topStyle: {
-      'background-color': '#000'
-    },
-    bottomStyle: {
-      'background-color': 'rgba(255, 191, 23, 0.5)'
-    }
+    })()
   }),
   methods: {
     setFrontFace(layoutItem, faceIndexName, faceArray) {
