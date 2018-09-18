@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest docs",
     "build-lib": "vue-cli-service build --target lib ./src/components/MetroTile.vue",
     "lint": "vue-cli-service lint"
   },
