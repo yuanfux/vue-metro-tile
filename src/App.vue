@@ -562,7 +562,11 @@ export default {
     })(),
     monthDay: (() => {
       return new Date().getDate();
-    })()
+    })(),
+    faceIndex1: 0,  
+    faceArray1: ['front', 'top', 'front', 'bottom'],  
+    faceIndex2: 0,  
+    faceArray2: ['front', 'top'],
   }),
   methods: {
     setFrontFace(layoutItem, faceIndexName, faceArray) {
