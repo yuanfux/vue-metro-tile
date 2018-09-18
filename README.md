@@ -1,5 +1,9 @@
 # vue-metro-tile
 
+<p align="center">
+  <img width="150" height="150" src="https://user-images.githubusercontent.com/6414178/45662644-3a441000-bb35-11e8-8e72-e6ed618a733d.png">
+</p>
+
 ## Preview
 Vue Metro Tile is a Vue component for building Windows 10 like metro layout in modern browser.
 
