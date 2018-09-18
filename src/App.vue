@@ -103,7 +103,7 @@
                     <div class="tile-label">
                       Microsoft Store
                     </div>
-                    <img src="./assets/cyberpunk2077.png" class="store-cover-img" />
+                    <img src="https://user-images.githubusercontent.com/6414178/45696034-3fd14280-bb95-11e8-8c45-cd2020fabefc.png" class="store-cover-img" />
                     <div class="store-title">
                       Cyberpunk 2077
                     </div>
@@ -116,7 +116,7 @@
                     <div class="tile-label">
                       Microsoft Store
                     </div>
-                    <img src="./assets/halfLife.png" class="store-cover-img" />
+                    <img src="https://user-images.githubusercontent.com/6414178/45696084-56779980-bb95-11e8-87ac-817bf448cd4f.png" class="store-cover-img" />
                     <div class="store-title">
                       Half-Life 3: Episode 1
                     </div>
@@ -129,7 +129,7 @@
                     <div class="tile-label">
                       Microsoft Store
                     </div>
-                    <img src="./assets/grandTheftAuto.png" class="store-cover-img" />
+                    <img src="https://user-images.githubusercontent.com/6414178/45696072-4eb7f500-bb95-11e8-8e7c-ccb0099e5161.png" class="store-cover-img" />
                     <div class="store-title">
                       Grand Theft Auto VI
                     </div>
@@ -218,7 +218,7 @@
                   <div class="tile-label">
                     Vue
                   </div>
-                  <img src="./assets/logo.png" class="image" />
+                  <img src="https://user-images.githubusercontent.com/6414178/45696077-51b2e580-bb95-11e8-91ab-097cc1d1b89d.png" class="image" />
                 </div>
                 <div slot="top">
                   <div class="tile-label">
@@ -575,7 +575,8 @@ export default {
       layoutItem.frontFace = faceArray[this[faceIndexName] % faceArray.length];
     },
     redirect() {
-      window.location.href = REPO_URL;
+      window.open(REPO_URL, '_blank');
+      // window.location.href = REPO_URL;
     }
   },
   mounted() {
