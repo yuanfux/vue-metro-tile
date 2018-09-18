@@ -759,8 +759,7 @@ body {
 }
 
 .vue-grid-item.vue-grid-placeholder {
-  background-color: transparent;
-  opacity: 1;
+  background-color: transparent !important;
 }
 
 .calendar {
