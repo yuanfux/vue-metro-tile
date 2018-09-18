@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div>
+      <img width="120" height="120" src="https://user-images.githubusercontent.com/6414178/45662644-3a441000-bb35-11e8-8e72-e6ed618a733d.png">
+    </div>
     <div class="title">
       Vue Metro Tile
     </div>
@@ -665,7 +668,7 @@ body {
   font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
-  padding: 50px 0 10px 0;
+  padding: 0 0 10px 0;
   color: #fff;
 }
 
