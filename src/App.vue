@@ -8,10 +8,10 @@
     </div>
     <div class="grid-layout-container margin-right">
       <grid-layout
-              :layout="layout1"
+              :layout="layoutLeft"
               :col-num="6"
-              :colWidth="baseLen"
-              :row-height="baseLen"
+              :colWidth="BASE_LEN"
+              :row-height="BASE_LEN"
               :is-draggable="true"
               :is-resizable="false"
               :is-mirrored="false"
@@ -19,8 +19,7 @@
               :margin="[0, 0]"
               :use-css-transforms="true"
       >
-
-          <grid-item v-for="item in layout1"
+          <grid-item v-for="item in layoutLeft"
                      :x="item.x"
                      :y="item.y"
                      :w="item.w"
@@ -189,10 +188,10 @@
     </div>
     <div class="grid-layout-container">
       <grid-layout
-              :layout="layout2"
+              :layout="layoutRight"
               :col-num="6"
-              :colWidth="baseLen"
-              :row-height="baseLen"
+              :colWidth="BASE_LEN"
+              :row-height="BASE_LEN"
               :is-draggable="true"
               :is-resizable="false"
               :is-mirrored="false"
@@ -200,8 +199,7 @@
               :margin="[0, 0]"
               :use-css-transforms="true"
       >
-
-          <grid-item v-for="item in layout2"
+          <grid-item v-for="item in layoutRight"
                      :x="item.x"
                      :y="item.y"
                      :w="item.w"
@@ -278,7 +276,7 @@
                   :length="item.length"
                   :frontFace="item.frontFace"
                   :faceStyle="item.faceStyle"
-                  @click="testClick($event)">
+                  @click="redirect">
                 <div slot="front">
                     <div class="tile-label">
                       View Source on GitHub
@@ -414,6 +412,10 @@ import GrooveIcon from './assets/groove.svg';
 import ChromeIcon from './assets/chrome.svg';
 import AccessIcon from './assets/access.svg';
 
+const BASE_LEN = 65;
+const MARGIN = 3;
+const REPO_URL = 'https://github.com/yuanfux/vue-metro-tile';
+
 export default {
   name: 'app',
   components: {
@@ -437,17 +439,16 @@ export default {
     AccessIcon
   },
   data: () => ({
-    baseLen: 65,
-    layout1: [
+    BASE_LEN,
+    layoutLeft: [
       {
         x: 0,
         y: 0,
         w: 4,
         h: 2,
         i: "0",
-        width: 124,
-        height: 124,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -459,9 +460,8 @@ export default {
         w: 4,
         h: 2,
         i: "1",
-        width: 124,
-        height: 124,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#228b22'
@@ -473,9 +473,8 @@ export default {
         w: 4,
         h: 2,
         i: "2",
-        width: 124,
-        height: 124,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#ff4500'
@@ -487,9 +486,8 @@ export default {
         w: 2,
         h: 2,
         i: "3",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#9400d3'
@@ -501,9 +499,8 @@ export default {
         w: 2,
         h: 2,
         i: "4",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#ffa07a'
@@ -515,9 +512,8 @@ export default {
         w: 2,
         h: 2,
         i: "5",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -529,9 +525,8 @@ export default {
         w: 2,
         h: 2,
         i: "6",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -543,25 +538,23 @@ export default {
         w: 4,
         h: 2,
         i: "7",
-        width: 124,
-        height: 124,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
         }
       }
     ],
-    layout2: [
+    layoutRight: [
       {
         x: 0,
         y: 0,
         w: 1,
         h: 1,
         i: "0",
-        width: 59,
-        height: 59,
-        length: 59,
+        width: BASE_LEN - MARGIN*2,
+        height: BASE_LEN - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -573,9 +566,8 @@ export default {
         w: 1,
         h: 1,
         i: "1",
-        width: 59,
-        height: 59,
-        length: 59,
+        width: BASE_LEN - MARGIN*2,
+        height: BASE_LEN - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -587,9 +579,8 @@ export default {
         w: 1,
         h: 1,
         i: "2",
-        width: 59,
-        height: 59,
-        length: 59,
+        width: BASE_LEN - MARGIN*2,
+        height: BASE_LEN - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -601,9 +592,8 @@ export default {
         w: 1,
         h: 1,
         i: "3",
-        width: 59,
-        height: 59,
-        length: 59,
+        width: BASE_LEN - MARGIN*2,
+        height: BASE_LEN - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#1E90FF'
@@ -615,9 +605,8 @@ export default {
         w: 4,
         h: 2,
         i: "4",
-        width: 124,
-        height: 124,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#3cb371'
@@ -629,9 +618,8 @@ export default {
         w: 4,
         h: 4,
         i: "5",
-        width: 254,
-        height: 254,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*4 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#000'
@@ -643,9 +631,8 @@ export default {
         w: 2,
         h: 2,
         i: "6",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         frontStyle: {
           'background-color': '#8a2be2'
@@ -660,9 +647,8 @@ export default {
         w: 2,
         h: 2,
         i: "7",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#4169e1'
@@ -674,9 +660,8 @@ export default {
         w: 4,
         h: 2,
         i: "8",
-        width: 124,
-        height: 124,
-        length: 254,
+        width: BASE_LEN*4 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#4169e1'
@@ -688,9 +673,8 @@ export default {
         w: 2,
         h: 2,
         i: "9",
-        width: 124,
-        height: 124,
-        length: 124,
+        width: BASE_LEN*2 - MARGIN*2,
+        height: BASE_LEN*2 - MARGIN*2,
         frontFace: 'front',
         faceStyle: {
           'background-color': '#cd5c5c'
@@ -726,7 +710,7 @@ export default {
       // 'background-color': '#000'
     },
     backStyle: {
-      'background-color': 'rgba(240, 178, 124, 0.5)'
+      'background-color': 'rgba(240, 178, BASE_LEN*2 - MARGIN*2, 0.5)'
     },
     leftStyle: {
       'background-color': 'rgba(207, 112, 63, 0.5)'
@@ -746,18 +730,18 @@ export default {
       this[faceIndexName] += 1;
       layoutItem.frontFace = faceArray[this[faceIndexName] % faceArray.length];
     },
-    testClick(event) {
-      console.log('clicked metro tile', event);
+    redirect() {
+      window.location.href = REPO_URL;
     }
   },
   mounted() {
     this.interval1 = setInterval(
       () => {
-        this.setFrontFace(this.layout1[7], 'faceIndex1', this.faceArray1);
+        this.setFrontFace(this.layoutLeft[7], 'faceIndex1', this.faceArray1);
       }, 3000);
     this.interval2 = setInterval(
       () => {
-        this.setFrontFace(this.layout2[6], 'faceIndex2', this.faceArray2);
+        this.setFrontFace(this.layoutRight[6], 'faceIndex2', this.faceArray2);
       }, 5000);
   },
   beforeDestroy() {

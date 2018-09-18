@@ -60,15 +60,11 @@ export default {
         return ['front', 'top', 'back', 'bottom'].indexOf(value) !== -1;
       }
     },
-    width: {
-      type: Number,
-      default: 200
-    },
     height: {
       type: Number,
       default: 200
     },
-    length: {
+    width: {
       type: Number,
       default: 250
     },
@@ -114,7 +110,7 @@ export default {
       return {
         position: 'relative',
         cursor: 'pointer',
-        width: `${this.length}px`,
+        width: `${this.width}px`,
         height: `${this.height}px`,
         perspective: `${this.perspective}px`,
         overflow: 'hidden',
@@ -123,8 +119,8 @@ export default {
     },
     curFaceTransform: function() {
       const transformMap = {
-        front: `translateZ(-${this.width/2}px) rotateY(0deg)`,
-        back: `translateZ(-${this.width/2}px) rotateX(-180deg)`,
+        front: `translateZ(-${this.height/2}px) rotateY(0deg)`,
+        back: `translateZ(-${this.height/2}px) rotateX(-180deg)`,
         top: `translateZ(-${this.height/2}px) rotateX(-90deg)`,
         bottom: `translateZ(-${this.height/2}px) rotateX(90deg)`
       };
@@ -144,7 +140,7 @@ export default {
     glareBoundingBox: function() {
       // translateZ mainly deals with the Safari z-index conflicting with transform issue
       // tilt cannot exceed the larger number of height/2 and length/2
-      const translateZ = Math.max(this.height/2, this.length/2);
+      const translateZ = Math.max(this.height/2, this.width/2);
       // need to offset the scaling effect caused by translateZ
       const scaleOffset = this.perspective ? this.perspective / (this.perspective - translateZ) : 1;
       return {
@@ -161,10 +157,10 @@ export default {
     hoverGlareStyle: function() {
       return {
         position: 'absolute',
-        width: `${this.length*2}px`,
+        width: `${this.width*2}px`,
         height: `${this.height*2}px`,
         'background-image': `radial-gradient(circle at center, rgba(255,255,255, 0.7) 0%, rgba(255,255,255,0.1) 100%)`,
-        transform: `translate(${this.hoverX-this.length/2}px, ${this.hoverY-this.height/2}px) translate(-${this.length/2}px, -${this.height/2}px)`,
+        transform: `translate(${this.hoverX-this.width/2}px, ${this.hoverY-this.height/2}px) translate(-${this.width/2}px, -${this.height/2}px)`,
         opacity: this.isHover ? this.hoverGlareOpacity : 0,
         'transform-style': 'preserve-3d',
         // 'will-change': 'transform'
@@ -189,9 +185,9 @@ export default {
         ...this.faceStyle,
         ...this.frontStyle,
         position: 'absolute',
-        width: `${this.length}px`,
+        width: `${this.width}px`,
         height: `${this.height}px`,
-        transform: `translateZ(${this.width/2}px)`
+        transform: `translateZ(${this.height/2}px)`
       }
     },
     backFaceStyle: function() {
@@ -199,10 +195,10 @@ export default {
         ...this.faceStyle,
         ...this.backStyle,
         position: 'absolute',
-        width: `${this.length}px`,
+        width: `${this.width}px`,
         height: `${this.height}px`,
         // use rotateZ to adjust back face position when rotating
-        transform: `translateZ(-${this.width/2}px) rotateZ(180deg) rotateY(180deg)`
+        transform: `translateZ(-${this.height/2}px) rotateZ(180deg) rotateY(180deg)`
       }
     },
     topFaceStyle: function() {
@@ -210,9 +206,9 @@ export default {
         ...this.faceStyle,
         ...this.topStyle,
         position: 'absolute',
-        width: `${this.length}px`,
-        height: `${this.width}px`,
-        transform: `translateY(-${this.width/2}px) rotateX(90deg)`
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+        transform: `translateY(-${this.height/2}px) rotateX(90deg)`
       }
     },
     bottomFaceStyle: function() {
@@ -220,9 +216,9 @@ export default {
         ...this.faceStyle,
         ...this.bottomStyle,
         position: 'absolute',
-        width: `${this.length}px`,
-        height: `${this.width}px`,
-        transform: `translateY(${this.height-this.width/2}px) rotateX(-90deg)`
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+        transform: `translateY(${this.height-this.height/2}px) rotateX(-90deg)`
       }
     },
     leftFaceStyle: function() {
@@ -230,9 +226,9 @@ export default {
         ...this.faceStyle,
         ...this.leftStyle,
         position: 'absolute',
-        width: `${this.width}px`,
+        width: `${this.height}px`,
         height: `${this.height}px`,
-        transform: `translateX(-${this.width/2}px) rotateY(-90deg)`
+        transform: `translateX(-${this.height/2}px) rotateY(-90deg)`
       }
     },
     rightFaceStyle: function() {
@@ -240,9 +236,9 @@ export default {
         ...this.faceStyle,
         ...this.rightStyle,
         position: 'absolute',
-        width: `${this.width}px`,
+        width: `${this.height}px`,
         height: `${this.height}px`,
-        transform: `translateX(${this.length-this.width/2}px) rotateY(90deg)`
+        transform: `translateX(${this.width-this.height/2}px) rotateY(90deg)`
       }
     }
   },
@@ -280,7 +276,7 @@ export default {
 
     // tilt the tile based on relative mouse position
     tiltTile(relativePos) {
-      const percentageX = relativePos.x / this.length;
+      const percentageX = relativePos.x / this.width;
       const percentageY = relativePos.y / this.height;
       const tiltX = ((0.5 - percentageY) * this.maxTiltX).toFixed(2);
       const tiltY = ((percentageX - 0.5) * this.maxTiltY).toFixed(2);
