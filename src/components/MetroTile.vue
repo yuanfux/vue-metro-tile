@@ -187,7 +187,8 @@ export default {
         position: 'absolute',
         width: `${this.width}px`,
         height: `${this.height}px`,
-        transform: `translateZ(${this.height/2}px)`
+        transform: `translateZ(${this.height/2}px)`,
+        outline: '1px solid transparent'
       }
     },
     backFaceStyle: function() {
@@ -198,7 +199,8 @@ export default {
         width: `${this.width}px`,
         height: `${this.height}px`,
         // use rotateZ to adjust back face position when rotating
-        transform: `translateZ(-${this.height/2}px) rotateZ(180deg) rotateY(180deg)`
+        transform: `translateZ(-${this.height/2}px) rotateZ(180deg) rotateY(180deg)`,
+        outline: '1px solid transparent'
       }
     },
     topFaceStyle: function() {
@@ -208,7 +210,8 @@ export default {
         position: 'absolute',
         width: `${this.width}px`,
         height: `${this.height}px`,
-        transform: `translateY(-${this.height/2}px) rotateX(90deg)`
+        transform: `translateY(-${this.height/2}px) rotateX(90deg)`,
+        outline: '1px solid transparent'
       }
     },
     bottomFaceStyle: function() {
@@ -218,7 +221,8 @@ export default {
         position: 'absolute',
         width: `${this.width}px`,
         height: `${this.height}px`,
-        transform: `translateY(${this.height-this.height/2}px) rotateX(-90deg)`
+        transform: `translateY(${this.height-this.height/2}px) rotateX(-90deg)`,
+        outline: '1px solid transparent'
       }
     },
     leftFaceStyle: function() {
@@ -228,7 +232,8 @@ export default {
         position: 'absolute',
         width: `${this.height}px`,
         height: `${this.height}px`,
-        transform: `translateX(-${this.height/2}px) rotateY(-90deg)`
+        transform: `translateX(-${this.height/2}px) rotateY(-90deg)`,
+        outline: '1px solid transparent'
       }
     },
     rightFaceStyle: function() {
@@ -238,7 +243,8 @@ export default {
         position: 'absolute',
         width: `${this.height}px`,
         height: `${this.height}px`,
-        transform: `translateX(${this.width-this.height/2}px) rotateY(90deg)`
+        transform: `translateX(${this.width-this.height/2}px) rotateY(90deg)`,
+        outline: '1px solid transparent'
       }
     }
   },
