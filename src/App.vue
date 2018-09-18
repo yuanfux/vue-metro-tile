@@ -174,7 +174,8 @@
                 :faceStyle="item.faceStyle"
                 :frontStyle="item.frontStyle"
                 :topStyle="item.topStyle"
-                :perspective="item.perspective">
+                :perspective="item.perspective"
+                v-on="item.i === '5' ? {click: redirect} : {}">
               <!-- custom face for each tile in right layout-->
               <template v-if="item.i === '0'">
                 <div slot="front">
