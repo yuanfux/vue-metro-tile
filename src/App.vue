@@ -6,123 +6,84 @@
     <div class="subtitle">
       *click to animate or drag to rearrange
     </div>
+
     <div class="grid-layout-container margin-right">
       <grid-layout
-              :layout="layoutLeft"
-              :col-num="6"
-              :colWidth="BASE_LEN"
-              :row-height="BASE_LEN"
-              :is-draggable="true"
-              :is-resizable="false"
-              :is-mirrored="false"
-              :vertical-compact="true"
-              :margin="[0, 0]"
-              :use-css-transforms="true"
+                  :layout="layoutLeft"
+                  :col-num="6"
+                  :colWidth="BASE_LEN"
+                  :row-height="BASE_LEN"
+                  :is-draggable="true"
+                  :is-resizable="false"
+                  :is-mirrored="false"
+                  :vertical-compact="true"
+                  :margin="[0, 0]"
+                  :use-css-transforms="true"
       >
-          <grid-item v-for="item in layoutLeft"
-                     :x="item.x"
-                     :y="item.y"
-                     :w="item.w"
-                     :h="item.h"
-                     :i="item.i"
-                     :key="item.i">
-            <div v-if="item.i === '0'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+        <grid-item v-for="item in layoutLeft"
+                   :x="item.x"
+                   :y="item.y"
+                   :w="item.w"
+                   :h="item.h"
+                   :i="item.i"
+                   :key="item.i">
+          <div class="container">
+            <MetroTile 
+                :width="item.width"
+                :height="item.height"
+                :length="item.length"
+                :frontFace="item.frontFace"
+                :faceStyle="item.faceStyle">
+              <!-- custom face for each tile in left layout-->
+              <template v-if="item.i === '0'">
                 <div slot="front">
                     <EdgeIcon style="fill: white" class="icon" />
                     <div class="tile-label">
                       Microsoft Edge
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '1'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '1'">
                 <div slot="front">
                     <XboxIcon style="fill: white" class="icon" />
                     <div class="tile-label">
                       Xbox
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '2'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '2'">
                 <div slot="front">
                     <OfficeIcon style="fill: white" class="icon" />
                     <div class="tile-label">
                       My Office
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '3'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '3'">
                 <div slot="front">
                     <OneNoteIcon style="fill: white" class="icon" />
                     <div class="tile-label">
                       OneNote
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '4'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '4'">
                 <div slot="front">
                     <PowerPointIcon style="fill: white" class="icon" />
                     <div class="tile-label">
                       PowerPoint
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '5'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '5'">
                 <div slot="front">
                     <CortanaIcon style="fill: white" class="icon" />
                     <div class="tile-label">
                       Cortana
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '6'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '6'">
                 <div slot="front">
                     <div class="calendar">
                       <div class="calendar-week-day">
@@ -133,15 +94,8 @@
                       </div>
                     </div>
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '7'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '7'">
                 <div slot="front">
                     <div class="tile-label">
                       Microsoft Store
@@ -181,179 +135,121 @@
                     </div>
                     <StoreIcon style="fill: white" class="store-icon-right"/>
                 </div>
-              </MetroTile>
-            </div>
-          </grid-item>
+              </template>
+            </MetroTile>
+          </div>
+        </grid-item>
       </grid-layout>
     </div>
+
     <div class="grid-layout-container">
       <grid-layout
-              :layout="layoutRight"
-              :col-num="6"
-              :colWidth="BASE_LEN"
-              :row-height="BASE_LEN"
-              :is-draggable="true"
-              :is-resizable="false"
-              :is-mirrored="false"
-              :vertical-compact="true"
-              :margin="[0, 0]"
-              :use-css-transforms="true"
+                  :layout="layoutRight"
+                  :col-num="6"
+                  :colWidth="BASE_LEN"
+                  :row-height="BASE_LEN"
+                  :is-draggable="true"
+                  :is-resizable="false"
+                  :is-mirrored="false"
+                  :vertical-compact="true"
+                  :margin="[0, 0]"
+                  :use-css-transforms="true"
       >
-          <grid-item v-for="item in layoutRight"
-                     :x="item.x"
-                     :y="item.y"
-                     :w="item.w"
-                     :h="item.h"
-                     :i="item.i"
-                     :key="item.i">
-            <div v-if="item.i === '0'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+        <grid-item v-for="item in layoutRight"
+                   :x="item.x"
+                   :y="item.y"
+                   :w="item.w"
+                   :h="item.h"
+                   :i="item.i"
+                   :key="item.i">
+          <div class="container">
+            <MetroTile 
+                :width="item.width"
+                :height="item.height"
+                :length="item.length"
+                :frontFace="item.frontFace"
+                :faceStyle="item.faceStyle"
+                :frontStyle="item.frontStyle"
+                :topStyle="item.topStyle"
+                :perspective="item.perspective">
+              <!-- custom face for each tile in right layout-->
+              <template v-if="item.i === '0'">
                 <div slot="front">
-                    <WeatherIcon style="fill: white" class="icon" />
+                  <WeatherIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '1'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '1'">
                 <div slot="front">
-                    <SettingsIcon style="fill: white" class="icon" />
+                  <SettingsIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '2'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '2'">
                 <div slot="front">
-                    <PhotoIcon style="fill: white" class="icon" />
+                  <PhotoIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '3'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '3'">
                 <div slot="front">
-                    <CameraIcon style="fill: white" class="icon" />
+                  <CameraIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '4'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '4'">
                 <div slot="front">
-                    <div class="tile-label">
-                      Excel
-                    </div>
-                    <ExcelIcon class="icon" />
+                  <div class="tile-label">
+                    Excel
+                  </div>
+                  <ExcelIcon class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '5'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle"
-                  @click="redirect">
+              </template>
+              <template v-else-if="item.i === '5'">
                 <div slot="front">
-                    <div class="tile-label">
-                      View Source on GitHub
-                    </div>
-                    <GithubIcon style="fill: white" class="icon" />
+                  <div class="tile-label">
+                    View Source on GitHub
+                  </div>
+                  <GithubIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '6'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :frontStyle="item.frontStyle"
-                  :topStyle="item.topStyle"
-                  :perspective="0" >
+              </template>
+              <template v-else-if="item.i === '6'">
                 <div slot="front">
-                    <div class="tile-label">
-                      Vue
-                    </div>
-                    <img src="./assets/logo.png" class="image" />
+                  <div class="tile-label">
+                    Vue
+                  </div>
+                  <img src="./assets/logo.png" class="image" />
                 </div>
                 <div slot="top">
-                    <div class="tile-label">
-                      Angular
-                    </div>
-                    <img src="./assets/angular.png" class="image" />
+                  <div class="tile-label">
+                    Angular
+                  </div>
+                  <img src="./assets/angular.png" class="image" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '7'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '7'">
                 <div slot="front">
-                    <div class="tile-label">
-                      Groove Music
-                    </div>
-                    <GrooveIcon style="fill: white" class="icon" />
+                  <div class="tile-label">
+                    Groove Music
+                  </div>
+                  <GrooveIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '8'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '8'">
                 <div slot="front">
-                    <div class="tile-label">
-                      Google Chrome
-                    </div>
-                    <ChromeIcon class="icon" />
+                  <div class="tile-label">
+                    Google Chrome
+                  </div>
+                  <ChromeIcon class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-            <div v-if="item.i === '9'" class="container">
-              <MetroTile 
-                  :width="item.width"
-                  :height="item.height"
-                  :length="item.length"
-                  :frontFace="item.frontFace"
-                  :faceStyle="item.faceStyle">
+              </template>
+              <template v-else-if="item.i === '9'">
                 <div slot="front">
-                    <div class="tile-label">
-                      Access
-                    </div>
-                    <AccessIcon style="fill: white" class="icon" />
+                  <div class="tile-label">
+                    Access
+                  </div>
+                  <AccessIcon style="fill: white" class="icon" />
                 </div>
-              </MetroTile>
-            </div>
-          </grid-item>
+              </template>
+            </MetroTile>
+          </div>
+        </grid-item>
       </grid-layout>
     </div>
     <!-- <MetroTile
@@ -639,7 +535,8 @@ export default {
         },
         topStyle: {
           'background-color': '#1E90FF'
-        }
+        },
+        perspective: 0
       },
       {
         x: 4,
