@@ -1,0 +1,360 @@
+<template>
+  <div :style="sceneStyle" @mousemove="onMouseMove($event)" @mousedown="onMouseDown($event)" @mouseup="onMouseUp" @mouseleave="onMouseLeave" ref="scene" @click="$emit('click', $event)">
+    <div :style="boxContainerStyle">
+      <div :style="frontFaceStyle">
+        <slot name="front"></slot>
+      </div>
+      <div :style="backFaceStyle">
+        <slot name="back"></slot>
+      </div>
+      <div :style="topFaceStyle">
+        <slot name="top"></slot>
+      </div>
+      <div :style="bottomFaceStyle">
+        <slot name="bottom"></slot>
+      </div>
+      <div :style="rightFaceStyle">
+        <slot name="right"></slot>
+      </div>
+      <div :style="leftFaceStyle">
+        <slot name="left"></slot>
+      </div>
+    </div>
+    <div :class="{border: isHover && !isMouseDown}" :style="glareBoundingBox">
+      <div :style="hoverGlareStyle">
+      </div>
+      <div :class="{ripple: isAnimating }" :style="clickGlareStyle" @animationend="resetAnimation">
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MetroTile',
+  props: {
+    faceStyle: {
+      type: Object
+    },
+    frontStyle: {
+      type: Object
+    },
+    backStyle: {
+      type: Object
+    },
+    rightStyle: {
+      type: Object
+    },
+    leftStyle: {
+      type: Object
+    },
+    topStyle: {
+      type: Object
+    },
+    bottomStyle: {
+      type: Object
+    },
+    frontFace: {
+      validator: function (value) {
+        // The value must match one of these strings
+        return ['front', 'top', 'back', 'bottom'].indexOf(value) !== -1;
+      }
+    },
+    width: {
+      type: Number,
+      default: 200
+    },
+    height: {
+      type: Number,
+      default: 200
+    },
+    length: {
+      type: Number,
+      default: 250
+    },
+    perspective: {
+      type: Number,
+      default: 750
+    },
+    maxTiltX: {
+      type: Number,
+      default: 20
+    },
+    maxTiltY: {
+      type: Number,
+      default: 10
+    },
+    clickGlareSize: {
+      type: Number,
+      default: 90
+    },
+    clickGlareOpacity: {
+      type: Number,
+      default: 0.15
+    },
+    hoverGlareOpacity: {
+      type: Number,
+      default: 0.3
+    }
+  },
+  data: function() {
+    return {
+      curTiltTransform: '',
+      clickGlareTop: 0,
+      clickGlareLeft: 0,
+      hoverX: 0,
+      hoverY: 0,
+      isHover: false,
+      isMouseDown: false,
+      isAnimating: false
+    }
+  },
+  computed: {
+    sceneStyle: function() {
+      return {
+        position: 'relative',
+        cursor: 'pointer',
+        width: `${this.length}px`,
+        height: `${this.height}px`,
+        perspective: `${this.perspective}px`,
+        overflow: 'hidden',
+        'background-color': 'rgba(153,153,153,0.3)'
+      }
+    },
+    curFaceTransform: function() {
+      const transformMap = {
+        front: `translateZ(-${this.width/2}px) rotateY(0deg)`,
+        back: `translateZ(-${this.width/2}px) rotateX(-180deg)`,
+        top: `translateZ(-${this.height/2}px) rotateX(-90deg)`,
+        bottom: `translateZ(-${this.height/2}px) rotateX(90deg)`
+      };
+      return transformMap[this.frontFace];
+    },
+    boxContainerStyle: function() {
+      return {
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        'transform-style': 'preserve-3d',
+        transition: 'transform 0.5s',
+        transform: `${this.curTiltTransform} ${this.curFaceTransform}`,
+        'will-change': 'transform'
+      }
+    },
+    glareBoundingBox: function() {
+      // translateZ mainly deals with the Safari z-index conflicting with transform issue
+      // tilt cannot exceed the larger number of height/2 and length/2
+      const translateZ = Math.max(this.height/2, this.length/2);
+      // need to offset the scaling effect caused by translateZ
+      const scaleOffset = this.perspective ? this.perspective / (this.perspective - translateZ) : 1;
+      return {
+        width: '100%',
+        height: '100%',
+        top: 0,
+        left: 0,
+        position: 'absolute',
+        overflow: 'hidden',
+        'transform-style': 'preserve-3d',
+        transform: `scale(${1/scaleOffset}, ${1/scaleOffset}) translateZ(${translateZ}px`
+      }
+    },
+    hoverGlareStyle: function() {
+      return {
+        position: 'absolute',
+        width: `${this.length*2}px`,
+        height: `${this.height*2}px`,
+        'background-image': `radial-gradient(circle at center, rgba(255,255,255, 0.7) 0%, rgba(255,255,255,0.1) 100%)`,
+        transform: `translate(${this.hoverX-this.length/2}px, ${this.hoverY-this.height/2}px) translate(-${this.length/2}px, -${this.height/2}px)`,
+        opacity: this.isHover ? this.hoverGlareOpacity : 0,
+        'transform-style': 'preserve-3d',
+        // 'will-change': 'transform'
+      } 
+    },
+    clickGlareStyle: function() {
+      return {
+        position: 'absolute',
+        width: `${this.clickGlareSize}px`,
+        height: `${this.clickGlareSize}px`,
+        opacity: 0,
+        'border-radius': '50%',
+        '--glare-top': `${this.clickGlareTop - this.clickGlareSize/2}px`,
+        '--glare-left': `${this.clickGlareLeft - this.clickGlareSize/2}px`,
+        '--glare-opacity': `${this.clickGlareOpacity}`,
+        'transform-style': 'preserve-3d',
+        // 'will-change': 'transform opacity'
+      }
+    },
+    frontFaceStyle: function() {
+      return {
+        ...this.faceStyle,
+        ...this.frontStyle,
+        position: 'absolute',
+        width: `${this.length}px`,
+        height: `${this.height}px`,
+        transform: `translateZ(${this.width/2}px)`
+      }
+    },
+    backFaceStyle: function() {
+      return {
+        ...this.faceStyle,
+        ...this.backStyle,
+        position: 'absolute',
+        width: `${this.length}px`,
+        height: `${this.height}px`,
+        // use rotateZ to adjust back face position when rotating
+        transform: `translateZ(-${this.width/2}px) rotateZ(180deg) rotateY(180deg)`
+      }
+    },
+    topFaceStyle: function() {
+      return {
+        ...this.faceStyle,
+        ...this.topStyle,
+        position: 'absolute',
+        width: `${this.length}px`,
+        height: `${this.width}px`,
+        transform: `translateY(-${this.width/2}px) rotateX(90deg)`
+      }
+    },
+    bottomFaceStyle: function() {
+      return {
+        ...this.faceStyle,
+        ...this.bottomStyle,
+        position: 'absolute',
+        width: `${this.length}px`,
+        height: `${this.width}px`,
+        transform: `translateY(${this.height-this.width/2}px) rotateX(-90deg)`
+      }
+    },
+    leftFaceStyle: function() {
+      return {
+        ...this.faceStyle,
+        ...this.leftStyle,
+        position: 'absolute',
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+        transform: `translateX(-${this.width/2}px) rotateY(-90deg)`
+      }
+    },
+    rightFaceStyle: function() {
+      return {
+        ...this.faceStyle,
+        ...this.rightStyle,
+        position: 'absolute',
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+        transform: `translateX(${this.length-this.width/2}px) rotateY(90deg)`
+      }
+    }
+  },
+  methods: {
+    // get relative mouse position to the scene
+    getRelativePos2Scene(pageX, pageY) {
+      const boundingRect = this.$refs.scene.getBoundingClientRect();
+      return {
+        x: pageX - (boundingRect.left + window.scrollX),
+        y: pageY - (boundingRect.top + window.scrollY)
+      }
+    },
+
+    onMouseDown(event) {
+      const relativePos = this.getRelativePos2Scene(event.pageX, event.pageY);
+      this.tiltTile(relativePos);
+      this.clickGlare(relativePos);
+      this.setMouseDown(true);
+    },
+
+    onMouseUp() {
+      this.recoverTile();
+      this.setMouseDown(false);
+    },
+
+    onMouseMove(event) {
+      const relativePos = this.getRelativePos2Scene(event.pageX, event.pageY);
+      this.hoverGlare(relativePos);
+    },
+
+    onMouseLeave() {
+      this.recoverTile();
+      this.resetHover();
+    },
+
+    // tilt the tile based on relative mouse position
+    tiltTile(relativePos) {
+      const percentageX = relativePos.x / this.length;
+      const percentageY = relativePos.y / this.height;
+      const tiltX = ((0.5 - percentageY) * this.maxTiltX).toFixed(2);
+      const tiltY = ((percentageX - 0.5) * this.maxTiltY).toFixed(2);
+      this.curTiltTransform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    },
+
+    // recover the tile from tilting
+    recoverTile() {
+      this.curTiltTransform = '';
+    },
+
+    // reset hover variable
+    resetHover() {
+      this.isHover = false;
+    },
+
+    // trigger glare effect when clicking
+    clickGlare(relativePos) {
+      this.clickGlareTop = relativePos.y;
+      this.clickGlareLeft = relativePos.x;
+      this.isAnimating = true;
+    },
+
+    // reset the click glare animation
+    resetAnimation() {
+      this.isAnimating = false;
+    },
+
+    // trigger glare effect when hovering 
+    hoverGlare(relativePos) {
+      this.isHover = true;
+      this.hoverX = relativePos.x;
+      this.hoverY = relativePos.y;
+    },
+
+    // set click variable
+    setMouseDown(state) {
+      this.isMouseDown = state;
+    }
+  }
+}
+</script>
+
+<style>
+.ripple {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(5px);
+  /*opacity: 0.15;*/
+  opacity: var(--glare-opacity);
+  animation-name: ripple;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(var(--glare-left), var(--glare-top)) scale(1, 1);
+    opacity: var(--glare-opacity);
+  }
+
+  100% {
+    transform: translate(var(--glare-left), var(--glare-top)) scale(10, 10);
+    opacity: 0;
+  }
+
+}
+
+.border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+</style>

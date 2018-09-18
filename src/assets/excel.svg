@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" version="1.1" width="48px" height="48px">
+<g id="surface1">
+<path style=" fill:#4CAF50;" d="M 41 10 L 25 10 L 25 38 L 41 38 C 41.554688 38 42 37.554688 42 37 L 42 11 C 42 10.445313 41.554688 10 41 10 Z "/>
+<path style=" fill:#FFFFFF;" d="M 32 15 L 39 15 L 39 18 L 32 18 Z "/>
+<path style=" fill:#FFFFFF;" d="M 32 25 L 39 25 L 39 28 L 32 28 Z "/>
+<path style=" fill:#FFFFFF;" d="M 32 30 L 39 30 L 39 33 L 32 33 Z "/>
+<path style=" fill:#FFFFFF;" d="M 32 20 L 39 20 L 39 23 L 32 23 Z "/>
+<path style=" fill:#FFFFFF;" d="M 25 15 L 30 15 L 30 18 L 25 18 Z "/>
+<path style=" fill:#FFFFFF;" d="M 25 25 L 30 25 L 30 28 L 25 28 Z "/>
+<path style=" fill:#FFFFFF;" d="M 25 30 L 30 30 L 30 33 L 25 33 Z "/>
+<path style=" fill:#FFFFFF;" d="M 25 20 L 30 20 L 30 23 L 25 23 Z "/>
+<path style=" fill:#2E7D32;" d="M 27 42 L 6 38 L 6 10 L 27 6 Z "/>
+<path style=" fill:#FFFFFF;" d="M 19.128906 31 L 16.71875 26.4375 C 16.625 26.269531 16.53125 25.957031 16.433594 25.5 L 16.398438 25.5 C 16.351563 25.714844 16.242188 26.042969 16.074219 26.480469 L 13.652344 31 L 9.894531 31 L 14.355469 24 L 10.273438 17 L 14.109375 17 L 16.113281 21.195313 C 16.269531 21.527344 16.40625 21.921875 16.53125 22.375 L 16.570313 22.375 C 16.648438 22.105469 16.796875 21.695313 17.011719 21.15625 L 19.238281 17 L 22.753906 17 L 18.554688 23.9375 L 22.867188 30.996094 L 19.128906 30.996094 Z "/>
+</g>
+</svg>
