@@ -1,4 +1,5 @@
 module.exports = {
+  baseUrl: process.env.NODE_ENV === 'production' ? '/vue-metro-tile/' : '/',
   chainWebpack: config => {
     config.module
           .rule('svg')
