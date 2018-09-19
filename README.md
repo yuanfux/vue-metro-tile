@@ -15,7 +15,7 @@ The component currently got the following features:
 1. Customized tile content
 2. 3D tile rotation
 3. Glare effect when hovering or clicking
-4. ️Tilt effect when mouse holds down
+4. Tilt effect when mouse holds down
 
 ## Install
 ```
