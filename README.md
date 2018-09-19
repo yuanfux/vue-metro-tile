@@ -7,11 +7,16 @@
 </p>
 
 ## Preview
-Vue Metro Tile is a Vue component for building Windows 10 like metro layout in modern browser.
-
 View [Demo](https://yuanfux.github.io/vue-metro-tile/)
-
 > The demo is empowered by `vue-metro-tile` & `vue-grid-layout`
+
+Vue Metro Tile is a Vue component for building Windows 10 like metro layout in modern browser.
+The component currently got the following features:
+1. 💈Customized tile content
+2. 🎡3D tile rotation
+3. 🎇Glare effect when hovering or clicking
+4. ⚖️Tilt effect when mouse holds down
+
 ## Install
 ```
 npm install vue-metro-tile --save
