@@ -1,3 +1,4 @@
+
 # vue-metro-tile
 
 ![npm](https://img.shields.io/npm/v/vue-metro-tile.svg) ![GitHub issues](https://img.shields.io/github/issues/yuanfux/vue-metro-tile.svg) ![Maintenance](https://img.shields.io/maintenance/yes/2018.svg) ![NpmLicense](https://img.shields.io/npm/l/vue-metro-tile.svg)
@@ -129,9 +130,10 @@ hoverGlareOpacity?: number = 0.3;
 
 ## Browser compatibility
 
-| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" /><br/>Opera |
-| :----: | :----: | :----: | :----: |
-| latest | latest | latest | latest |
- 
+| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" /><br/>Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" /><br/>Opera |
+| :----: | :----: | :----: | :----: | :----: |
+| latest | latest | latest | latest | latest |
+> Some older versions may be supported as well
+
 ## License
 MIT

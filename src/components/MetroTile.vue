@@ -86,7 +86,7 @@ export default {
     },
     clickGlareOpacity: {
       type: Number,
-      default: 0.15
+      default: 0.2
     },
     hoverGlareOpacity: {
       type: Number,
@@ -98,6 +98,7 @@ export default {
       curTiltTransform: '',
       clickGlareTop: 0,
       clickGlareLeft: 0,
+      glareScale: 5,
       hoverX: 0,
       hoverY: 0,
       isHover: false,
@@ -167,15 +168,25 @@ export default {
       } 
     },
     clickGlareStyle: function() {
+      const glareScaledsize = this.clickGlareSize * this.glareScale;
+      // for Microsoft Edge compatibility issue, scale transform is banned
+      // the width & height transform is not centered
+      // offset is needed for centering the scale animation
+      const glareScaledOffset = (glareScaledsize - this.clickGlareSize) / 2;
+      const glareTop = this.clickGlareTop - this.clickGlareSize/2;
+      const glareLeft = this.clickGlareLeft - this.clickGlareSize/2;
       return {
         position: 'absolute',
         width: `${this.clickGlareSize}px`,
         height: `${this.clickGlareSize}px`,
         opacity: 0,
         'border-radius': '50%',
-        '--glare-top': `${this.clickGlareTop - this.clickGlareSize/2}px`,
-        '--glare-left': `${this.clickGlareLeft - this.clickGlareSize/2}px`,
+        '--glare-top': `${glareTop}px`,
+        '--glare-left': `${glareLeft}px`,
         '--glare-opacity': `${this.clickGlareOpacity}`,
+        '--glare-scaled-size': `${glareScaledsize}px`,
+        '--glare-scaled-top': `${glareTop - glareScaledOffset}px`,
+        '--glare-scaled-left': `${glareLeft - glareScaledOffset}px`,
         'transform-style': 'preserve-3d',
         // 'will-change': 'transform opacity'
       }
@@ -330,7 +341,6 @@ export default {
 .ripple {
   background-image: radial-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
   filter: blur(5px);
-  /*opacity: 0.15;*/
   opacity: var(--glare-opacity);
   animation-name: ripple;
   animation-duration: 1.3s;
@@ -339,12 +349,14 @@ export default {
 
 @keyframes ripple {
   0% {
-    transform: translate(var(--glare-left), var(--glare-top)) scale(1, 1);
+    transform: translate(var(--glare-left), var(--glare-top));
     opacity: var(--glare-opacity);
   }
 
   100% {
-    transform: translate(var(--glare-left), var(--glare-top)) scale(10, 10);
+    width: var(--glare-scaled-size);
+    height: var(--glare-scaled-size);
+    transform: translate(var(--glare-scaled-left), var(--glare-scaled-top));
     opacity: 0;
   }
 

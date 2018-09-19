@@ -1963,12 +1963,12 @@ __webpack_require__.r(__webpack_exports__);
 // EXTERNAL MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 var setPublicPath = __webpack_require__("1eb2");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9177f106-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MetroTile.vue?vue&type=template&id=7a47b7c8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9177f106-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MetroTile.vue?vue&type=template&id=3dedbc5c&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"scene",style:(_vm.sceneStyle),on:{"mousemove":function($event){_vm.onMouseMove($event)},"mousedown":function($event){_vm.onMouseDown($event)},"mouseup":_vm.onMouseUp,"mouseleave":_vm.onMouseLeave,"click":function($event){_vm.$emit('click', $event)}}},[_c('div',{style:(_vm.boxContainerStyle)},[_c('div',{style:(_vm.frontFaceStyle)},[_vm._t("front")],2),_c('div',{style:(_vm.backFaceStyle)},[_vm._t("back")],2),_c('div',{style:(_vm.topFaceStyle)},[_vm._t("top")],2),_c('div',{style:(_vm.bottomFaceStyle)},[_vm._t("bottom")],2),_c('div',{style:(_vm.rightFaceStyle)},[_vm._t("right")],2),_c('div',{style:(_vm.leftFaceStyle)},[_vm._t("left")],2)]),_c('div',{class:{border: _vm.isHover && !_vm.isMouseDown},style:(_vm.glareBoundingBox)},[_c('div',{style:(_vm.hoverGlareStyle)}),_c('div',{class:{ripple: _vm.isAnimating },style:(_vm.clickGlareStyle),on:{"animationend":_vm.resetAnimation}})])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MetroTile.vue?vue&type=template&id=7a47b7c8&
+// CONCATENATED MODULE: ./src/components/MetroTile.vue?vue&type=template&id=3dedbc5c&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/defineProperty.js
 function _defineProperty(obj, key, value) {
@@ -2110,7 +2110,7 @@ var es7_promise_finally = __webpack_require__("097d");
     },
     clickGlareOpacity: {
       type: Number,
-      default: 0.15
+      default: 0.2
     },
     hoverGlareOpacity: {
       type: Number,
@@ -2122,6 +2122,7 @@ var es7_promise_finally = __webpack_require__("097d");
       curTiltTransform: '',
       clickGlareTop: 0,
       clickGlareLeft: 0,
+      glareScale: 5,
       hoverX: 0,
       hoverY: 0,
       isHover: false,
@@ -2191,15 +2192,25 @@ var es7_promise_finally = __webpack_require__("097d");
       };
     },
     clickGlareStyle: function clickGlareStyle() {
+      var glareScaledsize = this.clickGlareSize * this.glareScale; // for Microsoft Edge compatibility issue, scale transform is banned
+      // the width & height transform is not centered
+      // offset is needed for centering the scale animation
+
+      var glareScaledOffset = (glareScaledsize - this.clickGlareSize) / 2;
+      var glareTop = this.clickGlareTop - this.clickGlareSize / 2;
+      var glareLeft = this.clickGlareLeft - this.clickGlareSize / 2;
       return {
         position: 'absolute',
         width: "".concat(this.clickGlareSize, "px"),
         height: "".concat(this.clickGlareSize, "px"),
         opacity: 0,
         'border-radius': '50%',
-        '--glare-top': "".concat(this.clickGlareTop - this.clickGlareSize / 2, "px"),
-        '--glare-left': "".concat(this.clickGlareLeft - this.clickGlareSize / 2, "px"),
+        '--glare-top': "".concat(glareTop, "px"),
+        '--glare-left': "".concat(glareLeft, "px"),
         '--glare-opacity': "".concat(this.clickGlareOpacity),
+        '--glare-scaled-size': "".concat(glareScaledsize, "px"),
+        '--glare-scaled-top': "".concat(glareTop - glareScaledOffset, "px"),
+        '--glare-scaled-left': "".concat(glareLeft - glareScaledOffset, "px"),
         'transform-style': 'preserve-3d' // 'will-change': 'transform opacity'
 
       };
