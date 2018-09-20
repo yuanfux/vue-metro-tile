@@ -1,5 +1,5 @@
 <template>
-  <div :style="sceneStyle" @mousemove="onMouseMove($event)" @mousedown="onMouseDown($event)" @mouseup="onMouseUp" @mouseleave="onMouseLeave" ref="scene" @click="$emit('click', $event)">
+  <div :style="sceneStyle" @mousemove="onMouseMove($event)" @mousedown="onMouseDown($event)" @mouseup="onMouseUp($event)" @mouseleave="onMouseLeave" ref="scene">
     <div :style="boxContainerStyle">
       <div :style="frontFaceStyle">
         <slot name="front"></slot>
@@ -101,6 +101,8 @@ export default {
       glareScale: 5,
       hoverX: 0,
       hoverY: 0,
+      mouseDownX: 0,
+      mouseDownY: 0,
       isHover: false,
       isMouseDown: false,
       isAnimating: false
@@ -271,12 +273,22 @@ export default {
 
     onMouseDown(event) {
       const relativePos = this.getRelativePos2Scene(event.pageX, event.pageY);
+      this.mouseDownX = event.pageX;
+      this.mouseDownY = event.pageY;
       this.tiltTile(relativePos);
       this.clickGlare(relativePos);
       this.setMouseDown(true);
     },
 
-    onMouseUp() {
+    onMouseUp(event) {
+      // only emit click when mousedown and mouseup 
+      // are at the same position
+      if (
+        this.mouseDownX === event.pageX &&
+        this.mouseDownY === event.pageY
+      ) {
+        this.$emit('click', event);
+      }
       this.recoverTile();
       this.setMouseDown(false);
     },
