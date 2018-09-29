@@ -91,9 +91,8 @@ width?: number = 200;
 // the height of square prism in px
 height?: number = 200;
 
-// current showing face
-// changing this prop at run time will induce the rotating animation
-frontFace?: 'front' | 'back' | 'top' | 'bottom' = 'front';
+// the rotation along X axis in degree
+rotateX?: number = 0;
 
 // the perspective of square prism container in px
 perspective?: number = 750;

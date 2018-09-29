@@ -35,7 +35,7 @@
                 :width="item.width"
                 :height="item.height"
                 :length="item.length"
-                :frontFace="item.frontFace"
+                :rotateX="item.rotateX"
                 :faceStyle="item.faceStyle">
               <!-- custom face for each tile in left layout-->
               <template v-if="item.i === '0'">
@@ -170,10 +170,12 @@
                 :width="item.width"
                 :height="item.height"
                 :length="item.length"
-                :frontFace="item.frontFace"
+                :rotateX="item.rotateX"
                 :faceStyle="item.faceStyle"
                 :frontStyle="item.frontStyle"
                 :topStyle="item.topStyle"
+                :backStyle="item.backStyle"
+                :bottomStyle="item.bottomStyle"
                 :perspective="item.perspective"
                 v-on="item.i === '5' ? {click: redirect} : {}">
               <!-- custom face for each tile in right layout-->
@@ -316,7 +318,7 @@ export default {
         i: "0",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -329,7 +331,7 @@ export default {
         i: "1",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#228b22'
         }
@@ -342,7 +344,7 @@ export default {
         i: "2",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#ff4500'
         }
@@ -355,7 +357,7 @@ export default {
         i: "3",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#9400d3'
         }
@@ -368,7 +370,7 @@ export default {
         i: "4",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#ffa07a'
         }
@@ -381,7 +383,7 @@ export default {
         i: "5",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -394,7 +396,7 @@ export default {
         i: "6",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -407,7 +409,7 @@ export default {
         i: "7",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -422,7 +424,7 @@ export default {
         i: "0",
         width: BASE_LEN - MARGIN*2,
         height: BASE_LEN - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -435,7 +437,7 @@ export default {
         i: "1",
         width: BASE_LEN - MARGIN*2,
         height: BASE_LEN - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -448,7 +450,7 @@ export default {
         i: "2",
         width: BASE_LEN - MARGIN*2,
         height: BASE_LEN - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -461,7 +463,7 @@ export default {
         i: "3",
         width: BASE_LEN - MARGIN*2,
         height: BASE_LEN - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#1E90FF'
         }
@@ -474,7 +476,7 @@ export default {
         i: "4",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#3cb371'
         }
@@ -487,7 +489,7 @@ export default {
         i: "5",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*4 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#000'
         }
@@ -500,12 +502,18 @@ export default {
         i: "6",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         frontStyle: {
           'background-color': '#8a2be2'
         },
         topStyle: {
           'background-color': '#1E90FF'
+        },
+        backStyle: {
+          'background-color': 'yellow'
+        },
+        bottomStyle: {
+          'background-color': 'green'
         },
         perspective: 0
       },
@@ -517,7 +525,7 @@ export default {
         i: "7",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#4169e1'
         }
@@ -530,7 +538,7 @@ export default {
         i: "8",
         width: BASE_LEN*4 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#4169e1'
         }
@@ -543,7 +551,7 @@ export default {
         i: "9",
         width: BASE_LEN*2 - MARGIN*2,
         height: BASE_LEN*2 - MARGIN*2,
-        frontFace: 'front',
+        rotateX: 0,
         faceStyle: {
           'background-color': '#cd5c5c'
         }
@@ -564,15 +572,15 @@ export default {
     monthDay: (() => {
       return new Date().getDate();
     })(),
-    faceIndex1: 0,  
-    faceArray1: ['front', 'top', 'front', 'bottom'],  
-    faceIndex2: 0,  
-    faceArray2: ['front', 'top'],
+    rotateIndex1: 0,  
+    rotateArray1: [-90, 90, 90, -90],  
+    rotateIndex2: 0,  
+    rotateArray2: [-90, 90],
   }),
   methods: {
-    setFrontFace(layoutItem, faceIndexName, faceArray) {
-      this[faceIndexName] += 1;
-      layoutItem.frontFace = faceArray[this[faceIndexName] % faceArray.length];
+    setRotateX(layoutItem, rotateIndexName, rotateArray) {
+      layoutItem.rotateX += rotateArray[this[rotateIndexName] % rotateArray.length];
+      this[rotateIndexName] += 1;
     },
     redirect() {
       window.open(REPO_URL, '_blank');
@@ -582,11 +590,11 @@ export default {
   mounted() {
     this.interval1 = setInterval(
       () => {
-        this.setFrontFace(this.layoutLeft[7], 'faceIndex1', this.faceArray1);
+        this.setRotateX(this.layoutLeft[7], 'rotateIndex1', this.rotateArray1);
       }, 3000);
     this.interval2 = setInterval(
       () => {
-        this.setFrontFace(this.layoutRight[6], 'faceIndex2', this.faceArray2);
+        this.setRotateX(this.layoutRight[6], 'rotateIndex2', this.rotateArray2);
       }, 5000);
   },
   beforeDestroy() {

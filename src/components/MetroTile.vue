@@ -54,11 +54,9 @@ export default {
     bottomStyle: {
       type: Object
     },
-    frontFace: {
-      validator: function (value) {
-        // The value must match one of these strings
-        return ['front', 'top', 'back', 'bottom'].indexOf(value) !== -1;
-      }
+    rotateX: {
+      type: Number,
+      default: 0
     },
     height: {
       type: Number,
@@ -121,13 +119,7 @@ export default {
       }
     },
     curFaceTransform: function() {
-      const transformMap = {
-        front: `translateZ(-${this.height/2}px) rotateY(0deg)`,
-        back: `translateZ(-${this.height/2}px) rotateX(-180deg)`,
-        top: `translateZ(-${this.height/2}px) rotateX(-90deg)`,
-        bottom: `translateZ(-${this.height/2}px) rotateX(90deg)`
-      };
-      return transformMap[this.frontFace];
+      return `translateZ(-${this.height/2}px) rotateX(${this.rotateX}deg)`;
     },
     boxContainerStyle: function() {
       return {
