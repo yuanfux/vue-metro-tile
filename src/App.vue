@@ -735,7 +735,7 @@ body {
 .calendar .calendar-month-day {
   margin-top: 15px;
   font-size: 30px;
-  transform: scale(1.5, 2);
+  transform: scale(1.75);
 }
 
 </style>
