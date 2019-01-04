@@ -1,6 +1,6 @@
 {
   "name": "vue-metro-tile",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A windows 10 metro tile component in vue",
   "main": "dist/vue-metro-tile.common.js",
   "unpkg": "dist/vue-metro-tile.umd.min.js",

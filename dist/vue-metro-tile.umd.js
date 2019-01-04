@@ -944,12 +944,12 @@ __webpack_require__.r(__webpack_exports__);
 // EXTERNAL MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 var setPublicPath = __webpack_require__("1eb2");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9177f106-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MetroTile.vue?vue&type=template&id=4dc9a8d2&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9177f106-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MetroTile.vue?vue&type=template&id=11235e6f&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"scene",style:(_vm.sceneStyle),on:{"mousemove":function($event){_vm.onMouseMove($event)},"mousedown":function($event){_vm.onMouseDown($event)},"mouseup":function($event){_vm.onMouseUp($event)},"mouseleave":_vm.onMouseLeave}},[_c('div',{style:(_vm.boxContainerStyle)},[_c('div',{style:(_vm.frontFaceStyle)},[_vm._t("front")],2),_c('div',{style:(_vm.backFaceStyle)},[_vm._t("back")],2),_c('div',{style:(_vm.topFaceStyle)},[_vm._t("top")],2),_c('div',{style:(_vm.bottomFaceStyle)},[_vm._t("bottom")],2),_c('div',{style:(_vm.rightFaceStyle)},[_vm._t("right")],2),_c('div',{style:(_vm.leftFaceStyle)},[_vm._t("left")],2)]),_c('div',{class:{border: _vm.isHover && !_vm.isMouseDown},style:(_vm.glareBoundingBox)},[_c('div',{style:(_vm.hoverGlareStyle)}),_c('div',{class:{ripple: _vm.isAnimating },style:(_vm.clickGlareStyle),on:{"animationend":_vm.resetAnimation}})])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MetroTile.vue?vue&type=template&id=4dc9a8d2&
+// CONCATENATED MODULE: ./src/components/MetroTile.vue?vue&type=template&id=11235e6f&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/defineProperty.js
 function _defineProperty(obj, key, value) {
@@ -1139,7 +1139,8 @@ var es6_number_constructor = __webpack_require__("c5f6");
         position: 'absolute',
         overflow: 'hidden',
         'transform-style': 'preserve-3d',
-        transform: "scale(".concat(1 / scaleOffset, ", ").concat(1 / scaleOffset, ") translateZ(").concat(translateZ, "px")
+        transform: "scale(".concat(1 / scaleOffset, ", ").concat(1 / scaleOffset, ") translateZ(").concat(translateZ, "px"),
+        'pointer-events': 'none'
       };
     },
     hoverGlareStyle: function hoverGlareStyle() {
