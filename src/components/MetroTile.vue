@@ -146,7 +146,8 @@ export default {
         position: 'absolute',
         overflow: 'hidden',
         'transform-style': 'preserve-3d',
-        transform: `scale(${1/scaleOffset}, ${1/scaleOffset}) translateZ(${translateZ}px`
+        transform: `scale(${1/scaleOffset}, ${1/scaleOffset}) translateZ(${translateZ}px`,
+        'pointer-events': 'none'
       }
     },
     hoverGlareStyle: function() {
