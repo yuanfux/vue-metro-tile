@@ -1,7 +1,7 @@
 
 # vue-metro-tile
 
-![npm](https://img.shields.io/npm/v/vue-metro-tile.svg) ![GitHub issues](https://img.shields.io/github/issues/yuanfux/vue-metro-tile.svg) ![Maintenance](https://img.shields.io/maintenance/yes/2018.svg) ![NpmLicense](https://img.shields.io/npm/l/vue-metro-tile.svg)
+![npm](https://img.shields.io/npm/v/vue-metro-tile.svg?style=for-the-badge) ![GitHub issues](https://img.shields.io/github/issues/yuanfux/vue-metro-tile.svg?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=for-the-badge) ![NpmLicense](https://img.shields.io/npm/l/vue-metro-tile.svg?style=for-the-badge)
 
 <p align="center">
   <img width="150" height="150" src="https://user-images.githubusercontent.com/6414178/45662644-3a441000-bb35-11e8-8e72-e6ed618a733d.png">
