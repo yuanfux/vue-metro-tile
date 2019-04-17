@@ -1,5 +1,12 @@
 <template>
-  <div :style="sceneStyle" @mousemove="onMouseMove($event)" @mousedown="onMouseDown($event)" @mouseup="onMouseUp($event)" @mouseleave="onMouseLeave" ref="scene">
+  <div
+    :style="sceneStyle"
+    @mousemove="onMouseMove($event)"
+    @mousedown="onMouseDown($event)"
+    @mouseup="onMouseUp($event)"
+    @mouseleave="onMouseLeave"
+    @touchmove.prevent="onTouchMove($event)"
+    ref="scene">
     <div :style="boxContainerStyle">
       <div :style="frontFaceStyle">
         <slot name="front"></slot>
@@ -294,6 +301,10 @@ export default {
     onMouseLeave() {
       this.recoverTile();
       this.resetHover();
+    },
+
+    onTouchMove(event) {
+      this.$emit('touchmove', event);
     },
 
     // tilt the tile based on relative mouse position

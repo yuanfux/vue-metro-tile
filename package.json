@@ -1,6 +1,6 @@
 {
   "name": "vue-metro-tile",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A windows 10 metro tile component in vue",
   "main": "dist/vue-metro-tile.common.js",
   "unpkg": "dist/vue-metro-tile.umd.min.js",
@@ -32,7 +32,7 @@
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
-    "vue-grid-layout": "^2.2.0",
+    "vue-grid-layout": "^2.3.4",
     "vue-svg-loader": "^0.9.0",
     "vue-template-compiler": "^2.5.17"
   },

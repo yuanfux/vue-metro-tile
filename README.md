@@ -125,7 +125,8 @@ hoverGlareOpacity?: number = 0.3;
 
 ##  Events
 
- - `click` 
+ - `click`
+ - `touchmove`
 
 ## Browser compatibility
 
