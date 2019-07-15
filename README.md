@@ -1,7 +1,7 @@
 
 # vue-metro-tile
 
-[![npm](https://img.shields.io/npm/v/vue-metro-tile.svg?style=flat-square)](https://www.npmjs.com/package/vue-metro-tile) [![GitHub issues](https://img.shields.io/github/issues/yuanfux/vue-metro-tile.svg?style=flat-square)](https://github.com/yuanfux/vue-metro-tile/issues) ![GitHub closed issues](https://img.shields.io/github/issues-closed/yuanfux/vue-metro-tile.svg?style=flat-square) ![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=flat-square) ![NpmLicense](https://img.shields.io/npm/l/vue-metro-tile.svg?style=flat-square)
+[![npm](https://img.shields.io/npm/v/vue-metro-tile.svg?style=flat-square)](https://www.npmjs.com/package/vue-metro-tile) [![GitHub issues](https://img.shields.io/github/issues/yuanfux/vue-metro-tile.svg?style=flat-square)](https://github.com/yuanfux/vue-metro-tile/issues) [![GitHub closed issues](https://img.shields.io/github/issues-closed/yuanfux/vue-metro-tile.svg?style=flat-square)](https://github.com/yuanfux/vue-metro-tile/issues?q=is%3Aissue+is%3Aclosed) ![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=flat-square) ![NpmLicense](https://img.shields.io/npm/l/vue-metro-tile.svg?style=flat-square)
 
 <p align="center">
   <img width="150" height="150" src="https://user-images.githubusercontent.com/6414178/45662644-3a441000-bb35-11e8-8e72-e6ed618a733d.png">
