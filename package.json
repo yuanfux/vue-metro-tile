@@ -1,6 +1,6 @@
 {
   "name": "vue-metro-tile",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A windows 10 metro tile component in vue",
   "main": "dist/vue-metro-tile.common.js",
   "unpkg": "dist/vue-metro-tile.umd.min.js",
@@ -11,7 +11,10 @@
     "windows"
   ],
   "files": [
-    "dist/",
+    "dist/vue-metro-tile.common.js",
+    "dist/vue-metro-tile.umd.js",
+    "dist/vue-metro-tile.umd.min.js",
+    "dist/vue-metro-tile.css",
     "README.md"
   ],
   "homepage": "https://github.com/yuanfux/vue-metro-tile#readme",
@@ -26,15 +29,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-eslint": "^3.0.1",
-    "@vue/cli-service": "^3.0.1",
+    "@vue/cli-plugin-babel": "^3.9.2",
+    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-service": "^3.9.2",
     "vue-grid-layout": "^2.3.4",
-    "vue-svg-loader": "^0.9.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-svg-loader": "^0.12.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
